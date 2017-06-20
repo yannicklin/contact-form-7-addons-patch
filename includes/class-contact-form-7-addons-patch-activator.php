@@ -3,7 +3,7 @@
 /**
  * Fired during plugin activation
  *
- * @link       https://www.twoudia.com/
+ * @link       https://github.com/yannicklin/contact-form-7-addons-patch
  * @since      1.0.0
  *
  * @package    Contact_Form_7_Addons_Patch

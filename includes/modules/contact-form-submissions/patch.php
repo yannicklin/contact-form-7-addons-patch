@@ -3,7 +3,7 @@
 /**
  * Target Plugin: Contact Form 7 Submissions (contact-form-submissions)
  * Target Version: 1.5.5
- *  Reason: To solve the compability of WPCF7_ShortcodeManager::get_instance and WPCF7_ShortcodeManager->do_shortcode, wpcf7_scan_shortcode, $contact_form->form_scan_shortcode
+ *  Reason: To solve the potential unexisting $_GET['wpcf7_contact_form']
  */
 
 WPCF7SAdmin_patch::instance();

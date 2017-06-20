@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       https://www.twoudia.com/
+ * @link       https://github.com/yannicklin/contact-form-7-addons-patch
  * @since      1.0.0
  *
  * @package    Contact_Form_7_Addons_Patch
@@ -138,6 +138,7 @@ class Contact_Form_7_Addons_Patch {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+        $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_options_page' );
 
 	}
 

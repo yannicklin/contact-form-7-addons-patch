@@ -1,61 +1,45 @@
-=== Plugin Name ===
+=== Patch for 3rd party addons of Contact Form 7 ===
 Contributors: yannicklin
-Donate link: https://www.twoudia.com/
+Donate link: https://github.com/yannicklin/contact-form-7-addons-patch
 Tags: contact form 7, patch
 Requires at least: 4.0.0
 Tested up to: 4.7
 Stable tag: 1.0.0
-License:           GPLv3
-License URI:       https://www.gnu.org/licenses/gpl.txt
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl.txt
 
 This plugin is used as the packages of patches of common 3rd party addons for Contact Form 7.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+After the update of Contact Form 7 v 4.6, there are many functions have been put into 'Depressed', such as 'WPCF7_ShortcodeManager' and 'WPCF7_ShortcodeManager->do_shortcode'.
+Such messages of PHP notice/warming cause the log growed very rapid but hard to figure out the hints for function unworking.
+To eliminiate the issues with minimum efforts, this plugin was created to put the patches together as a whole package.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+The 3rd party addons this plugin can help to fix are as below.
 
-A few notes about the sections above:
-
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
-
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+* Contact Form 7 DatePicker (contact-form-7-datepicker) - v 2.6.0 : solve the depreciated functions since Contact Form v 4.6
+* Contact Form 7 Controls (contact-form-7-extras) - v 0.3.5 : solve the depreciated functions since Contact Form v 4.6
+* Contact Form 7 Image Captcha (cf7-image-captcha) - v 2.2.0 : solve the depreciated functions since Contact Form v 4.6
+* Contact Form 7 Lead Info with Country (wpshore_cf7_lead_tracking) - v 1.4.0 : coorect the typo variable '$cf7isSecure'
+<li>Contact Form 7 Textarea Wordcount (contact-form-7-textarea-wordcount) - v 1.1.1 : solve the depreciated functions since Contact Form v 4.6
+<li>Contact Form 7 Submissions (contact-form-submissions) - v 1.5.5 : the careless of checking $_GET[] existence
+<li>Multifile Upload Field for Contact Form 7 (multifile-upload-field-for-contact-form-7) - v 1.0.1 : solve the depreciated functions since Contact Form v 4.6
+<li>Rich Text Editor Field for Contact Form 7 (rich-text-editor-field-for-contact-form-7) - v 1.1.0 : solve the depreciated functions since Contact Form v 4.6
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
+= Munual Upload =
 1. Upload `contact-form-7-addons-patch.php` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+
+= via built-in Plugin menu =
+1. Install and Activate
+
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
-
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+Any question you may commend on [GitHub](https://github.com/yannicklin/contact-form-7-addons-patch“Patch for 3rd party addons of Contact Form 7”) directly. Thanks
 
 == Screenshots ==
 
@@ -68,8 +52,8 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 == Changelog ==
 
 = 1.0 =
-Initial version.
-The plugins with patches are :
+Initial release.
+The current patches included are :
 * Contact Form 7 DatePicker (v 2.6.0)
 * Contact Form 7 Controls (v 0.3.5)
 * Contact Form 7 Image Captcha (v 2.2.0)
@@ -82,35 +66,4 @@ The plugins with patches are :
 == Upgrade Notice ==
 
 = 1.0 =
-None.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+* Initial release.

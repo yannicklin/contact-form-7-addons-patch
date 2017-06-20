@@ -2,3 +2,23 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+.wrap.cf7apa li:before {
+    content: "\f106";
+    display: inline-block;
+    font: normal 12px/1 'dashicons';
+    color: inherit;
+}
+
+.wrap.cf7apa .cf7pa-3rdparty-plugin {
+    font-size: inherit;
+    font-weight: bold;
+    display: inline;
+}
+
+.wrap.cf7apa .cf7pa-3rdparty-plugin.active {
+    color: #0077aa;
+}
+
+.wrap.cf7apa .cf7pa-3rdparty-plugin.inactive {
+    color: #bbbbb9;
+}
