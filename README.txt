@@ -1,6 +1,8 @@
-=== Patch for 3rd party addons of Contact Form 7 ===
+=== CF7AP : Patch for 3rd party addons of Contact Form 7 ===
+Plugin Name: Patch for 3rd party addons of Contact Form 7
+Plugin URI: https://github.com/yannicklin/contact-form-7-addons-patch/
 Contributors: yannicklin
-Donate link: https://github.com/yannicklin/contact-form-7-addons-patch
+Donate link: https://github.com/yannicklin/contact-form-7-addons-patch/
 Tags: contact form 7, patch
 Requires at least: 4.0.0
 Tested up to: 4.7
@@ -22,10 +24,10 @@ The 3rd party addons this plugin can help to fix are as below.
 * Contact Form 7 Controls (contact-form-7-extras) - v 0.3.5 : solve the depreciated functions since Contact Form v 4.6
 * Contact Form 7 Image Captcha (cf7-image-captcha) - v 2.2.0 : solve the depreciated functions since Contact Form v 4.6
 * Contact Form 7 Lead Info with Country (wpshore_cf7_lead_tracking) - v 1.4.0 : coorect the typo variable '$cf7isSecure'
-<li>Contact Form 7 Textarea Wordcount (contact-form-7-textarea-wordcount) - v 1.1.1 : solve the depreciated functions since Contact Form v 4.6
-<li>Contact Form 7 Submissions (contact-form-submissions) - v 1.5.5 : the careless of checking $_GET[] existence
-<li>Multifile Upload Field for Contact Form 7 (multifile-upload-field-for-contact-form-7) - v 1.0.1 : solve the depreciated functions since Contact Form v 4.6
-<li>Rich Text Editor Field for Contact Form 7 (rich-text-editor-field-for-contact-form-7) - v 1.1.0 : solve the depreciated functions since Contact Form v 4.6
+* Contact Form 7 Textarea Wordcount (contact-form-7-textarea-wordcount) - v 1.1.1 : solve the depreciated functions since Contact Form v 4.6
+* Contact Form 7 Submissions (contact-form-submissions) - v 1.5.5 : the careless of checking $_GET[] existence
+* Multifile Upload Field for Contact Form 7 (multifile-upload-field-for-contact-form-7) - v 1.0.1 : solve the depreciated functions since Contact Form v 4.6
+* Rich Text Editor Field for Contact Form 7 (rich-text-editor-field-for-contact-form-7) - v 1.1.0 : solve the depreciated functions since Contact Form v 4.6, also solve the issue of tinyMCE with dashicons display in toolbar buttons
 
 == Installation ==
 
@@ -36,18 +38,13 @@ The 3rd party addons this plugin can help to fix are as below.
 = via built-in Plugin menu =
 1. Install and Activate
 
-
 == Frequently Asked Questions ==
 
-Any question you may commend on [GitHub](https://github.com/yannicklin/contact-form-7-addons-patch“Patch for 3rd party addons of Contact Form 7”) directly. Thanks
+Any question you may commend on [GitHub](https://github.com/yannicklin/contact-form-7-addons-patch/“Patch for 3rd party addons of Contact Form 7”) directly. Thanks
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. A sample screen of Admin Setting Page.
 
 == Changelog ==
 

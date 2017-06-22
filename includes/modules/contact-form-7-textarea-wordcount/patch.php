@@ -33,7 +33,7 @@ class wpcf7wc_patch {
             wpcf7_remove_form_tag( 'textarea' );
             wpcf7_remove_form_tag( 'textarea*' );
         }
-        wpcf7_add_form_tag( array( 'textarea', 'textarea*' ), 'wpcf7wc_textarea_formtag_handler', true );
+        wpcf7_add_form_tag( array( 'textarea', 'textarea*' ), array(__CLASS__, 'wpcf7wc_textarea_formtag_handler'), true );
     }
 
     public static function wpcf7wc_textarea_formtag_handler( $tag ) {

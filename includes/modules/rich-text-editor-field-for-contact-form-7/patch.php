@@ -3,9 +3,37 @@
 /**
  * Target Plugin: Rich Text Editor Field for Contact Form 7 (rich-text-editor-field-for-contact-form-7)
  * Target Version: 1.1.0
- *  Reason: To solve the compability of WPCF7_ShortcodeManager::get_instance and WPCF7_ShortcodeManager->do_shortcode
+ *  Reason: To solve the compability of WPCF7_ShortcodeManager::get_instance and WPCF7_ShortcodeManager->do_shortcode, and also solve the issue of tinyMCE with dashicons display in toolbar buttons
  */
 
+/***  Parts for fix the error in Contact_Form7_Rich_Text ***/
+Contact_Form7_Rich_Text_patch::instance();
+
+class Contact_Form7_Rich_Text_patch extends Contact_Form7_Rich_Text {
+    private static $instance;
+
+    /* Create instances of plugin classes and initializing the features  */
+    public static function instance() {
+
+        if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Contact_Form7_Rich_Text_patch ) ) {
+            self::$instance = new Contact_Form7_Rich_Text_patch();
+
+            //error_log("Already comes into Patch for CF7RT_Rich_Text. <br />");
+            remove_action('wp_enqueue_scripts',array(Contact_Form7_Rich_Text::instance(),'load_scripts'),9);
+            add_action('wp_enqueue_scripts',array(self::$instance,'load_dashicon_editor_buttons_styles'),9);
+        }
+        return self::$instance;
+    }
+
+    public function load_dashicon_editor_buttons_styles(){
+        $version = get_bloginfo('version');
+        wp_enqueue_style( 'dashicons-css', site_url() . '/wp-includes/css/dashicons.css', null, $version );
+        wp_enqueue_style( 'editor-buttons-css', site_url() . '/wp-includes/css/editor.css', null, $version );
+    }
+}
+
+
+/***  Parts for fix the error in CF7RT_Rich_Text_Editor ***/
 CF7RT_Rich_Text_Editor_patch::instance();
 
 class CF7RT_Rich_Text_Editor_patch extends CF7RT_Rich_Text_Editor
@@ -27,7 +55,8 @@ class CF7RT_Rich_Text_Editor_patch extends CF7RT_Rich_Text_Editor
         // Worst Case: Looping $wp_filter to figure out the certain CLASS + FUNCTION + PRIORITY
         $this->CF7AP_remove_class_action( 'init', 'CF7RT_Rich_Text_Editor', 'add_shortcode_rich_text_editor', 5);
         //remove_action('init', array('CF7RT_Rich_Text_Editor', 'add_shortcode_rich_text_editor'), 5);
-        add_action('init', array(__CLASS__, 'add_formtag_rich_text_editor'), 5);
+        add_action('wpcf7_init', array(__CLASS__, 'add_formtag_rich_text_editor'), 5);
+        add_filter( 'teeny_mce_buttons', array(__CLASS__, 'RTE_CF7_MCE_button_removal'));
 
         //global $wp_filter;
         //error_log(print_r($wp_filter['init'], true));
@@ -38,7 +67,7 @@ class CF7RT_Rich_Text_Editor_patch extends CF7RT_Rich_Text_Editor
         wpcf7_remove_form_tag('rich_text_editor');
         wpcf7_remove_form_tag('rich_text_editor*');
 
-        wpcf7_add_form_tag(array('rich_text_editor', 'rich_text_editor*'), 'rich_text_editor_formtag_handler', true);
+        wpcf7_add_form_tag(array('rich_text_editor', 'rich_text_editor*'), array(__CLASS__, 'rich_text_editor_formtag_handler'), true );
     }
 
     public static function rich_text_editor_formtag_handler($tag)
@@ -90,31 +119,35 @@ class CF7RT_Rich_Text_Editor_patch extends CF7RT_Rich_Text_Editor
         $atts = wpcf7_format_atts($atts);
 
         ob_start();
+
         $settings = array(
+            'wpautop' => false,
             'media_buttons' => false,
             'textarea_name' => $tag->name,
             'textarea_rows' => $pre_formated_atts['rows'],
             'editor_class' => "wpcf7_form_novalidate " . $tag->get_class_option($class),
-            'wpautop' => false
+            "teeny" => true,
+            "quicktags" => false,
         );
-
-        wp_enqueue_script('jquery');
         wp_editor($value, $tag->name, $settings);
+
         $rich_editor = ob_get_contents();
+        ob_end_clean();
 
         $html = '<span class="wpcf7-form-control-wrap ' . $tag->name . '">' . $rich_editor . $validation_error . '</span>
 	    <script type="text/javascript">
-	    jQuery(document).ready(function() {
 	        jQuery(".wpcf7-form").submit(function(e){
 	            jQuery("#' . $tag->name . '").val(tinyMCE.get("' . $tag->name . '").getContent());
 	            return true;
 	        });
-	    });
 	    </script>';
 
-        ob_end_clean();
-
         return $html;
+    }
+
+    public static function RTE_CF7_MCE_button_removal( $buttons ) {
+        $remove = array( 'fullscreen', );
+        return array_diff( $buttons, $remove );
     }
 
     /**

@@ -37,7 +37,7 @@ class wpcf7_multifile_patch {
         wpcf7_remove_form_tag( 'multifile' );
         wpcf7_remove_form_tag( 'multifile*' );
 
-        wpcf7_add_form_tag( array( 'multifile', 'multifile*' ), 'wpcf7_multifile_formtag_handler', true );
+        wpcf7_add_form_tag( array( 'multifile', 'multifile*' ), array($this, 'wpcf7_multifile_formtag_handler'), true );
     }
 
     function wpcf7_multifile_formtag_handler( $tag ) {

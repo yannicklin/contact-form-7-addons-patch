@@ -5,7 +5,7 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link       https://github.com/yannicklin/contact-form-7-addons-patch
+ * @link       https://github.com/yannicklin/contact-form-7-addons-patch/
  * @since      1.0.0
  *
  * @package    Contact_Form_7_Addons_Patch
@@ -15,7 +15,7 @@
 
 <div class="wrap cf7apa">
     <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
-    <p>The activation status of patches for responding plugins
+    <p><?php _e('The activation status of patches for responding plugins', 'contact-form-7-addons-patch'); ?>
         <ul>
             <li>Contact Form 7 DatePicker : <?php echo $this->plugin_active_check_html_output('contact-form-7-datepicker'); ?></li>
             <li>Contact Form 7 Controls : <?php echo $this->plugin_active_check_html_output('contact-form-7-extras'); ?></li>

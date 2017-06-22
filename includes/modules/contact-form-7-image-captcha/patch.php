@@ -24,7 +24,7 @@ class cf7ic_patch {
         remove_action('wpcf7_init', 'add_shortcode_cf7ic');
         remove_filter('wpcf7_validate_cf7ic*','cf7ic_check_if_spam', 10, 2);
         remove_filter('wpcf7_validate_cf7ic','cf7ic_check_if_spam', 10, 2);
-        add_action('init', array($this, 'add_formtag_cf7ic' ), 10);
+        add_action('wpcf7_init', array($this, 'add_formtag_cf7ic' ));
         add_filter('wpcf7_validate_cf7ic*',array($this, 'cf7ic_check_if_spam' ), 10, 2);
         add_filter('wpcf7_validate_cf7ic',array($this, 'cf7ic_check_if_spam' ), 10, 2);
 		// global $wp_filter;
@@ -32,10 +32,12 @@ class cf7ic_patch {
 	}
 
     function add_formtag_cf7ic() {
-        wpcf7_add_form_tag( 'cf7ic', 'call_cf7ic', true );
+        wpcf7_remove_form_tag('cf7ic');
+
+        wpcf7_add_form_tag( 'cf7ic', array(__CLASS__, 'call_cf7ic'), true );
     }
 
-    function call_cf7ic( $tag ) {
+    public static function call_cf7ic( $tag ) {
         $tag = new WPCF7_FormTag( $tag );
         wp_enqueue_style( 'cf7ic_style' ); // enqueue css
 

@@ -2,17 +2,17 @@
 
 /**
  *
- * @link              https://github.com/yannicklin/contact-form-7-addons-patch
+ * @link              https://github.com/yannicklin/contact-form-7-addons-patch/
  * @since             1.0.0
  * @package           Contact_Form_7_Addons_Patch
  *
  * @wordpress-plugin
  * Plugin Name:       Patch for 3rd party addons of Contact Form 7
- * Plugin URI:        https://github.com/
+ * Plugin URI:        https://github.com/yannicklin/contact-form-7-addons-patch/
  * Description:       This plugin is used as the packages of patches of common 3rd party addons for Contact Form 7.
  * Version:           1.0.0
  * Author:            Yannick Lin
- * Author URI:        https://github.com/yannicklin
+ * Author URI:        https://github.com/yannicklin/
  * License:           GPLv3
  * License URI:       https://www.gnu.org/licenses/gpl.txt
  * Text Domain:       contact-form-7-addons-patch
